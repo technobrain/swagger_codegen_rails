@@ -43,11 +43,7 @@ jobs:
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
             
-            bundle exec rspec --format progress \
-                            --out /tmp/test-results/rspec.xml \
-                            --format RspecJunitFormatter \
-                            --format progress \
-                            $TEST_FILES
+            RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o 
 
       # collect reports
       - store_test_results:
