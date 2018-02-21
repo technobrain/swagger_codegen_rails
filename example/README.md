@@ -5,8 +5,10 @@
 SwaggerCodegenRails.configure do |config|
   config.concern_directory = "/path/to/your/concern/directory"
   config.schema_directory = "/path/to/your/schema/dir"
+  # TODO: 他にもユースケースを考える．
 end
 ```
 ```bash
+# 
 rails g swagger:install
 ```
