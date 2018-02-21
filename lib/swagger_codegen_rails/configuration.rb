@@ -8,5 +8,5 @@ module SwaggerCodegenRails
     )
   end
 
-  attr_accesor(*OPTIONS)
+  attr_accessor(*OPTIONS)
 end
