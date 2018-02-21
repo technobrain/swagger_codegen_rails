@@ -1,0 +1,3 @@
+module SwaggerCodegenRails
+  # Your code goes here...
+end
