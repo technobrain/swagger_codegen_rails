@@ -1,5 +1,5 @@
 # Example to Use
-## Directory Construction In Use
+## Directory Construction
 ```rst
 .
 ├── app  
