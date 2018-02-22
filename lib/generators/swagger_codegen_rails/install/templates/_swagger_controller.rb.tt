@@ -1,4 +1,4 @@
-<%=
+<% module_namespacing do %>
 class SwaggerController < ActionController::Base
   include Swagger::Blocks
   
@@ -21,4 +21,4 @@ class SwaggerController < ActionController::Base
     render json: Swagger::Blocks.build_root_json(SWAGGER_CLASSES)
   end
 end
-=>
+<% end -%>
