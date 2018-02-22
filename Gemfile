@@ -13,4 +13,3 @@ gemspec
 # To use a debugger
 gem 'byebug', group: [:development, :test]
 gem 'rspec-rails', group: [:development, :test]
-gem 'rspec_junit_formatter', group: [:development, :test]
