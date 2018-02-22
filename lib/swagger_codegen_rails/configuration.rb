@@ -6,7 +6,7 @@ module SwaggerCodegenRails
       versioned
       versions_url
     )
-  end
 
-  attr_accessor(*OPTIONS)
+    attr_accessor(*OPTIONS)
+  end
 end
