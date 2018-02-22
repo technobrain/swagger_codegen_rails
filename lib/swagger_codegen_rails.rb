@@ -11,7 +11,7 @@ module SwaggerCodegenRails
     end
   
     def configure
-      yield configuration
+      yield(configuration)
     end
   end
 end
