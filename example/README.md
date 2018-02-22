@@ -44,7 +44,7 @@ config.versions_url|hash|EMPTY|define versioned path|
 
 
 ## install
-**``rails g swagger_codegen_rails:install``** will create these files listed below.
+**``rails g swagger_codegen_rails:install .``** will create these files listed below.
 
 - config/initializers/swagger_codegen_rails.rb
 - app/controllers/swagger_controller.rb
