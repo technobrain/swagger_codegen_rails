@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/technobrain/swagger_codegen_rails.svg?branch=master)](https://travis-ci.org/technobrain/swagger_codegen_rails)
+[![CircleCI](https://circleci.com/gh/technobrain/swagger_codegen_rails.svg?style=svg)](https://circleci.com/gh/technobrain/swagger_codegen_rails)
 
 # SwaggerCodegenRails
 Short description and motivation.
