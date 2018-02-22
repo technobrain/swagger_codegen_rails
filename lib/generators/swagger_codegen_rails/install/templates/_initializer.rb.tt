@@ -1,5 +1,28 @@
 # config/initializers/swagger_codegen_rails.rb
 
-SwaggerCodegenRails.configure do |config|
-  # configurate here
+SwaggerUiEngine.configure do |config|
+<% if SwaggerCodegenRails.configuration.versioned -%>
+  config.swagger_url = {
+  # version: "app/controllers/<%= name %>/swagger.json"
+  j
+<% else -%>
+  config.swagger_url = "app/controllers/<%= name %>/swagger.json"
+<% end -%>
+  # Controls how the API listing is displayed. It can be set to 'none' (default), 'list' (shows operations for each resource), or 'full' (fully expanded: shows operations and their details).
+  config.doc_expansion = 'list'
+
+  # Controls how models are shown when the API is first rendered. It can be set to 'model' or 'schema', and the default is 'schema'.
+  config.model_rendering = 'model'
+
+  # Whether or not to show the headers that were sent when making a request via the 'Try it out!' option. Defaults to false.
+  config.request_headers = false
+
+  # Enables a graphical view for editing complex bodies. Defaults to false.
+  config.json_editor = false
+
+  # Enables Swagger Ui translations. Defaults to false.
+  config.translator_enabled = false
+
+  # Enables documentation validator. Defaults to false (validatorUrl: 'null').
+  config.validator_enabled = false
 end

@@ -16,6 +16,9 @@ module SwaggerCodegenRails
       template "_swagger_controller.rb.tt", swagger_controller_path
     end
 
+    def insert_ui_route
+      route "mount SwaggerUiEngine::Engine, at: '/swagger'"
+    end
     private
     def swagger_controller_path
       File.expand_path(File.join("app/controllers", name, "swagger_controller.rb"))
