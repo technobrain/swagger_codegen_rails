@@ -1,14 +1,17 @@
+require'rails/generators/named_base'
+
 module SwaggerCodegenRails
   class InstallGenerator < ::Rails::Generators::Base
     argument :namespace, required: false
-    class_option :namespace, required: false, aliases: '-n'
+
+    source_root File.expand_path('../templates', __FILE__)
 
     def create_initializer_file
-      template "_initializer.rb", "app/initializers/swagger_codegen_rails.rb" unless initializer_exist?
+      template "_initializer.rb", "config/initializers/swagger_ui_engine.rb" unless initializer_exist?
     end
 
     def create_concern_dir
-      dir = Configuration.concern_dir
+      dir = SwaggerCodegenRails.configuration.concern_dir
       FileUtils.mkdir_p(dir) unless File.directory?(dir)
     end
 
@@ -18,7 +21,7 @@ module SwaggerCodegenRails
 
     private
     def initializer_exist?
-      initializer_path = File.extend_path("config/initializers/swagger_codegen_rails.rb")
+      initializer_path = File.expand_path("config/initializers/swagger_ui_engine.rb")
       File.exist?(initializer_path)
     end
 
