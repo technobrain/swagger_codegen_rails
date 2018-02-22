@@ -32,7 +32,7 @@ describe SwaggerCodegenRails::InstallGenerator, type: :generator do
     gen.invoke_all
   end
 
-  describe "generated files" do
+  describe "generated files without namespace" do
     before do
       run_generator %w(.)
     end
@@ -40,6 +40,39 @@ describe SwaggerCodegenRails::InstallGenerator, type: :generator do
     describe "initializer file" do
       subject { file("config/initializers/swagger_ui_engine.rb") }
       it { is_expected.to exist }
+      it { is_expected.to contain(/SwaggerUiEngine.configure do |config|/) }
+    end
+
+    describe "swagger_controller file" do
+      subject { file("app/controllers/swagger_controller.rb") }
+      it { is_expected.to exist }
+    end
+
+    describe "route file" do
+      subject { file("config/routes.rb") }
+      it { is_expected.to contain(/mount SwaggerUiEngine::Engine, at:/) }
+    end
+  end
+
+  describe "generated files with namespace" do
+    before do
+      run_generator %w(api/v1)
+    end
+
+    describe "initializer file" do
+      subject { file("config/initializers/swagger_ui_engine.rb") }
+      it { is_expected.to exist }
+      it { is_expected.to contain(/SwaggerUiEngine.configure do |config|/) }
+    end
+
+    describe "swagger_controller file" do
+      subject { file("app/controllers/api/v1/swagger_controller.rb") }
+      it { is_expected.to exist }
+    end
+
+    describe "route file" do
+      subject { file("config/routes.rb") }
+      it { is_expected.to contain(/mount SwaggerUiEngine::Engine, at:/) }
     end
   end
 end
