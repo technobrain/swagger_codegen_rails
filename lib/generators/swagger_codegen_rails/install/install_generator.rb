@@ -22,7 +22,7 @@ module SwaggerCodegenRails
 
     private
     def swagger_controller_path
-      File.expand_path(File.join("app/controllers", name, "swagger_controller.rb"))
+      File.join("app/controllers", name, "swagger_controller.rb")
     end
   end
 end

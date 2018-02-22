@@ -9,4 +9,6 @@ spec/dummy/tmp/
 spec/dummy/.byebug_history
 spec/dummy/config/initializers/swagger_ui_engine.rb
 spec/dummy/app/controllers/swagger_controller.rb
+spec/tmp
 *.gem
+.byebug_history
