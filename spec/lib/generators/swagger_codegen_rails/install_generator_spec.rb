@@ -4,24 +4,7 @@ require 'support/generators'
 
 describe SwaggerCodegenRails::InstallGenerator, type: :generator do
 
-  def create_tmp_route
-    route_path = File.join(destination_path, "config/routes.rb")
-    content = <<-EOS
-    Rails.application.routes.draw do
-    end
-    EOS
-
-    FileUtils.mkdir_p(File.dirname(route_path))
-    open(route_path, "w") do |file|
-      file.puts content
-    end
-  end
-
-  destination destination_path
-  before do
-    prepare_destination
-    create_tmp_route
-  end
+  setup_generator_test
 
   it 'runs all tasks' do
     gen = generator %w(api)
@@ -51,6 +34,11 @@ describe SwaggerCodegenRails::InstallGenerator, type: :generator do
     describe "route file" do
       subject { file("config/routes.rb") }
       it { is_expected.to contain(/mount SwaggerUiEngine::Engine, at:/) }
+    end
+
+    describe "concern dir" do
+      subject { File.directory?("app/controllers/concern") }
+      it { is_expected.to be true }
     end
   end
 
