@@ -1,7 +1,7 @@
 module SwaggerCodegenRails
   DEFAULTS = {
-    concern_dir:  "app/controllers/concern",
-    schema_dir:   "app/models/concern",
+    concern_dir:  "app/controllers/concerns",
+    schema_dir:   "app/models/concerns",
     versioned:    false
   }
 end

@@ -1,6 +1,10 @@
 require 'swagger_codegen_rails/version'
 require 'swagger_codegen_rails/configuration'
 require 'swagger_codegen_rails/defaults'
+require 'swagger_codegen_rails/parameter'
+require 'swagger_codegen_rails/parser'
+
+SwaggerCodegenRails.extend(SwaggerCodegenRails::Parser)
 
 module SwaggerCodegenRails
   class << self
