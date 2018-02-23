@@ -12,5 +12,3 @@ spec/dummy/app/controllers/swagger_controller.rb
 spec/tmp
 *.gem
 .byebug_history
-lib/generators/swagger_codegen_rails/install/templates/concern/*
-!.gitkeep

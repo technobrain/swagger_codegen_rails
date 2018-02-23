@@ -9,7 +9,7 @@ module SwaggerCodegenRails
 
     def create_concern_dir
       dir = SwaggerCodegenRails.configuration.concern_dir
-      directory 'concern', dir
+      directory nil, dir
     end
 
     def create_swagger_controller_file
