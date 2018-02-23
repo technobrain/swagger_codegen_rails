@@ -5,13 +5,16 @@ module SwaggerCodegenRails
                                :required)
     
     def parse_params(args)
-      args.each_with_index do |idx, arg|
-        self[idx] = arg
-      end
+      map_params(args)
+      args.each_with_index { |idx, arg| self[idx] = arg }
     rescue IndexError => e
       logger.error e
       logger.error e.backtrace.join("\n")
       return nil
+    end
+
+    def map_params(args)
+      args.map! { |arg| arg.split(":") }
     end
   end
 end

@@ -1,19 +1,19 @@
 module SwaggerCodegenRails
   class AddGenerator < ::Rails::Generators::NamedBase
-    argument :uri, type: :string, required: true
     argument :http_method, type: :string, required: true
-    argument :params, type: :array, required: false
+    argument :uri, type: :string, required: true
+    argument :params, type: :array, required: false, banner: 'name:in:type:required'
 
     source_root File.expand_path('../templates', __FILE__)
 
-    def parse_params
+    def arguments
       @params = SwaggerCodegenRails::Parameter.new
       @params.parse_params(params)
     end
 
     def create_endpoint_doc
       endpoint.each do |uri|
-        template '_swagger.rb.tt', File.join(swagger_path, file_name)
+        template '_swagger.rb.tt', File.join(swagger_path, file_name) if file_name
       end
     end
 
