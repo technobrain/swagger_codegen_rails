@@ -44,13 +44,13 @@ config.versions_url|hash|EMPTY|define versioned path|
 
 
 ## install
-**``rails g swagger_codegen_rails:install .``** will create these files listed below.
+**``rails g swagger_codegen_rails:install NAMESPACE``** will create these files listed below.
 
 - config/initializers/swagger_codegen_rails.rb
 - app/controllers/swagger_controller.rb
 - app/controllers/concerns
 
 ## create endpoint
-**``rails g swagger_codegen_rails:add NAMESPACE ENDPOINT PARAMETERS[name:in(query or path):type:require]``**
+**``rails g swagger_codegen_rails:add NAMESPACE HTTP_METHOD ENDPOINT PARAMETERS``**
  will create
- **``app/controllers/concern/CONTROLLER/ENDPOINT.rb``**
+ **``app/controllers/concerns/_ENDPOINT.rb``**
