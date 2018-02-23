@@ -12,3 +12,5 @@ spec/dummy/app/controllers/swagger_controller.rb
 spec/tmp
 *.gem
 .byebug_history
+
+!.gitkeep
