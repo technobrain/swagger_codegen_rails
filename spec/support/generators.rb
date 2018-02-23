@@ -17,13 +17,6 @@ module Generators
 
   def setup_generator_test
     setup_default_destination
-    remove_concern_dir
-  end
-
-  def remove_concern_dir
-    after do
-      FileUtils.rm_rf("app")
-    end
   end
 
   def create_tmp_route_file

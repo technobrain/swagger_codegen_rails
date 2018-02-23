@@ -37,8 +37,8 @@ describe SwaggerCodegenRails::InstallGenerator, type: :generator do
     end
 
     describe "concern dir" do
-      subject { File.directory?("app/controllers/concern") }
-      it { is_expected.to be true }
+      subject { file("app/controllers/concern") }
+      it { is_expected.to exist }
     end
   end
 
