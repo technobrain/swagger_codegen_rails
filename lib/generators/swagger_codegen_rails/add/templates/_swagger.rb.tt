@@ -17,7 +17,7 @@ module <%= module_name %>
           # A list of tags used by the specification with additional metadata.
         ]
 
-        <% @params&.each do |param| -%>
+<% @params&.each do |param| -%>
         parameter do
           key :name, <%= param.name %>
           key :in, <%= param.in %>
@@ -25,8 +25,8 @@ module <%= module_name %>
           key :type, <%= param.type %>
           key :required, <%= param.required %>
         end
-        <%= "\n" %>
-        <% end -%>
+<%= "\n" %>
+<% end -%>
         response 200 do
           key :description, "TODO: "
           schema do

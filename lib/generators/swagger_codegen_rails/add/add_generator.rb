@@ -2,19 +2,16 @@ module SwaggerCodegenRails
   class AddGenerator < ::Rails::Generators::NamedBase
     argument :http_method, type: :string, required: true
     argument :uri, type: :string, required: true
-    argument :params, type: :array, required: false, banner: 'name:in:type:required'
+    argument :parameter, type: :array, required: false, banner: 'name:in:type:required'
 
     source_root File.expand_path('../templates', __FILE__)
 
     def arguments
-      @params = SwaggerCodegenRails::Parameter.new
-      @params.parse_params(params)
+      @params = ::SwaggerCodegenRails.parse(parameter)
     end
 
     def create_endpoint_doc
-      endpoint.each do |uri|
-        template '_swagger.rb.tt', File.join(swagger_path, file_name) if file_name
-      end
+      template '_swagger.rb.tt', File.join(swagger_path, "_#{file_name}.rb") if file_name
     end
 
     private
@@ -28,15 +25,15 @@ module SwaggerCodegenRails
     end
 
     def file_name
-      namespace = "/" + name + "/"
-      if uri.start_with?(namespace)
-        uri.sub(namespace, '').gsub("/", "_").gsub(":",'')
+      name_space = File.dirname("/" + name + "/")
+      if uri.start_with?(name_space)
+        uri.sub(name_space, '').gsub("/", "_").gsub(":",'')
       else
         raise ArgumentError
       end
     rescue ArgumentError => e
-      logger.error e
-      logger.error e.backtrace.join("\n")
+      Rails.logger.error e
+      Rails.logger.error e.backtrace.join("\n")
     end
   end
 end
