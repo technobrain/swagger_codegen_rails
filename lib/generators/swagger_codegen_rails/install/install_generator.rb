@@ -4,7 +4,7 @@ module SwaggerCodegenRails
     source_root File.expand_path('../templates', __FILE__)
 
     def create_initializer_file
-      template "_initializer.rb.tt", "config/initializers/swagger_ui_engine.rb"
+      template "_initializer.rb.tt", "config/initializers/swagger_ui_engine.rb" unless initializer_exist?
     end
 
     def create_concern_dir
@@ -23,6 +23,11 @@ module SwaggerCodegenRails
     private
     def swagger_controller_path
       File.join("app/controllers", name, "swagger_controller.rb")
+    end
+
+    def initializer_exist?
+      initializer_path = "config/initializers/swagger_ui_engine.rb"
+      File.exist?(initializer_path)
     end
   end
 end
