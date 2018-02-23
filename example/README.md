@@ -51,6 +51,6 @@ config.versions_url|hash|EMPTY|define versioned path|
 - app/controllers/concerns
 
 ## create endpoint
-**``rails g swagger_codegen_rails:add ENDPOINT CONTROLLER PARAMETERS``**
+**``rails g swagger_codegen_rails:add NAMESPACE ENDPOINT PARAMETERS[name:in(query or path):type:require]``**
  will create
  **``app/controllers/concern/CONTROLLER/ENDPOINT.rb``**

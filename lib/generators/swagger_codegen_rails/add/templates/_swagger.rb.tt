@@ -1,2 +1,53 @@
 <% module_namespacing do -%>
+module <%= module_name %>
+  extend ActiveSupport::Concern
+  Dir.glob[<%= SwaggerCodegenRails.configuration.schema_dir %> + "/**/*.rb"].each do |schema|
+    include schema
+  end
+
+  included do
+    swagger_path '<%= uri %>' do
+      operation <%= http_method %> do
+        key :description, "TODO: describe endpoint here"
+        key :operationId, "TODO: "
+        key :produces, [
+          'application/join',
+        ]
+        key :tags, [
+          # A list of tags used by the specification with additional metadata.
+        ]
+
+        <% @params&.each do |param| -%>
+        parameter do
+          key :name, <%= param.name %>
+          key :in, <%= param.in %>
+          key :description, "TODO: "
+          key :type, <%= param.type %>
+          key :required, <%= param.required %>
+        end
+        <%= "\n" %>
+        <% end -%>
+        response 200 do
+          key :description, "TODO: "
+          schema do
+            key :'$ref', TODO:
+          end
+        end
+  
+        response 404 do
+          key :description, "TODO: "
+          schema do
+            key :'$ref', TODO:
+          end
+        end
+  
+        response 501 do
+          key :description, "TODO: "
+          schema do
+            key :'$ref', TODO:
+          end
+        end
+      end
+    end
+  end
 <% end -%>
