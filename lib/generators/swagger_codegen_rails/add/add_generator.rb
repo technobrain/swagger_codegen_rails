@@ -6,7 +6,7 @@ module SwaggerCodegenRails
 
     source_root File.expand_path('../templates', __FILE__)
 
-    def params
+    def parse_params
       @params = SwaggerCodegenRails::Parameter.new
       @params.parse_params(params)
     end
