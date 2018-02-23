@@ -8,8 +8,7 @@ module SwaggerCodegenRails
     end
 
     def create_concern_dir
-      dir = SwaggerCodegenRails.configuration.concern_dir
-      directory nil, dir
+      directory nil, concern_dir
     end
 
     def create_swagger_controller_file
@@ -23,6 +22,10 @@ module SwaggerCodegenRails
     private
     def swagger_controller_path
       File.join("app/controllers", name, "swagger_controller.rb")
+    end
+
+    def concern_dir
+      SwaggerCodegenRails.configuration.concern_dir
     end
 
     def initializer_exist?
