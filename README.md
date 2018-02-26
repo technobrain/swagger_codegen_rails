@@ -49,6 +49,7 @@ end
 ```
 
 Options:  
+
 |configurations|type|default|description|
 |:------|:----|:-|:-------------------------|
 |config.versioned|boolean|false|set path of versioned API documentations|
@@ -68,6 +69,7 @@ $ rails g swagger:add NAMESPACE HTTP_METHOD URI [PARAMETERS; name:in:type:requir
 ```
 
 Parameters:
+
 ||description|
 |:-|:-|
 |name|parameter name|
