@@ -71,7 +71,7 @@ Parameters:
 ||description|
 |:-|:-|
 |name|parameter name|
-|in|ex) in => /items?id=###, query => parameter is id.|
+|in|ex) in =\> /items?id=###, query =\> parameter is id.|
 |type|data type|
 |required|required|
 
