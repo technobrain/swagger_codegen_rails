@@ -1,4 +1,4 @@
-module SwaggerCodegenRails
+module Swagger
   class AddGenerator < ::Rails::Generators::NamedBase
     argument :http_method, type: :string, required: true
     argument :uri, type: :string, required: true
@@ -7,6 +7,7 @@ module SwaggerCodegenRails
     source_root File.expand_path('../templates', __FILE__)
 
     def arguments
+      byebug
       @params = ::SwaggerCodegenRails.parse(parameter)
     end
 
@@ -19,13 +20,17 @@ module SwaggerCodegenRails
       file_name.camelize
     end
 
+    def name_space
+      SwaggerCodegenRails.configuration.versions_url[name.to_sym] || name
+    end
+
     def swagger_path
       base_path = SwaggerCodegenRails.configuration.concern_dir
       File.join(base_path, name)
     end
 
     def file_name
-      name_space = File.dirname("/" + name + "/")
+      name_space = File.dirname("/" + name_space + "/")
       if uri.start_with?(name_space)
         uri.sub(name_space, '').gsub("/", "_").gsub(":",'')
       else

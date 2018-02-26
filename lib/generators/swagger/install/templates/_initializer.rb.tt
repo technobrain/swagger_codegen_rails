@@ -1,0 +1,19 @@
+SwaggerCodegenRails.configure do |config|
+  # If API will be managed at versioned, set true
+  # config.versioned = false
+
+  # Enable only in case config.versioned = true
+  # it ,name space aliases is to be in use add endpoint documents through swagger:add generator
+  # config.versions_url = {
+  #   v1: 'api/v1',
+  #   v2: 'api/v2'
+  # }
+
+  # directory swagger document files placed
+  # default: /app/controllers/concerns
+  # config.concern_dir = "/path/to/your/concern/directory"
+  
+  # derectory swagger response schema placed
+  # default: /app/models/concerns
+  # config.schema_dir = "/path/to/your/schema/dir"
+end
