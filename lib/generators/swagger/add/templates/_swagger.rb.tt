@@ -19,10 +19,10 @@ module <%= module_name %>
 
 <% @params&.each do |param| -%>
         parameter do
-          key :name, <%= param.name %>
-          key :in, <%= param.in %>
+          key :name, :<%= param.name %>
+          key :in, :<%= param.in %>
           key :description, "TODO: "
-          key :type, <%= param.type %>
+          key :type, :<%= param.type %>
           key :required, <%= param.required %>
         end
 <%= "\n" %>

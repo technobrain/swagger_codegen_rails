@@ -4,6 +4,8 @@ require 'swagger_codegen_rails/defaults'
 require 'swagger_codegen_rails/parameter'
 require 'swagger_codegen_rails/parser'
 
+require 'generators/swagger'
+
 SwaggerCodegenRails.extend(SwaggerCodegenRails::Parser)
 
 module SwaggerCodegenRails
