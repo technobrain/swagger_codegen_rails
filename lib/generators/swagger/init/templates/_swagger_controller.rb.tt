@@ -1,6 +1,9 @@
 <% module_namespacing do %>
 class SwaggerController < ActionController::Base
   include Swagger::Blocks
+  Dir.glob["<% concern_dir -%>/**/*.rb"].each do |swagger|
+    include swagger
+  end
   
   swagger_root do
     key :swagger, "2.0"

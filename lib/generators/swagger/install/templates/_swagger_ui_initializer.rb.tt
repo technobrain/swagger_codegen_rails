@@ -6,7 +6,7 @@ SwaggerUiEngine.configure do |config|
   # version: "app/controllers/<%= name %>/swagger.json"
   j
 <% else -%>
-  config.swagger_url = "app/controllers/<%= name %>/swagger.json"
+  config.swagger_url = "app/controllers/swagger.json"
 <% end -%>
   # Controls how the API listing is displayed. It can be set to 'none' (default), 'list' (shows operations for each resource), or 'full' (fully expanded: shows operations and their details).
   config.doc_expansion = 'list'
