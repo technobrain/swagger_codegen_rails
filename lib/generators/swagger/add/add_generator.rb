@@ -7,6 +7,7 @@ module Swagger
     source_root File.expand_path('../templates', __FILE__)
 
     def arguments
+      byebug
       @params = ::SwaggerCodegenRails.parse(parameter)
     end
 
@@ -21,6 +22,10 @@ module Swagger
     end
 
     def version_namespace
+      SwaggerCodegenRails.configuration.versions_url[name.to_sym] || name
+    end
+
+    def name_space
       SwaggerCodegenRails.configuration.versions_url[name.to_sym] || name
     end
 
