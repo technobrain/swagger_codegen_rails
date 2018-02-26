@@ -21,7 +21,7 @@ SwaggerUiEngine.configure do |config|
   config.json_editor = false
 
   # Enables Swagger Ui translations. Defaults to false.
-  config.translator_enabled = false
+  # config.translator_enabled = false
 
   # Enables documentation validator. Defaults to false (validatorUrl: 'null').
   config.validator_enabled = false

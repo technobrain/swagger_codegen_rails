@@ -21,7 +21,8 @@ module Swagger
     end
 
     def version_namespace
-      SwaggerCodegenRails.configuration.versions_url[name.to_sym] || name
+      config = SwaggerCodegenRails.configuration.versions_url
+      config[name.to_sym] || name if config
     end
 
     def name_space
