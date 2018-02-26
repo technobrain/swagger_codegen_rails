@@ -3,8 +3,8 @@ PATH
   specs:
     swagger_codegen_rails (0.1.0)
       rails (~> 5.1.4)
-      swagger-blocks (~> 0)
-      swagger_ui_engine (~> 0)
+      swagger-blocks
+      swagger_ui_engine
 
 GEM
   remote: https://rubygems.org/
