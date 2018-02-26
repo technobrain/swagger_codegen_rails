@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.name        = "swagger_codegen_rails"
   s.version     = SwaggerCodegenRails::VERSION
   s.authors     = ["techno brain"]
-  s.email       = [""]
-  s.homepage    = ""
-  s.summary     = "Summary of SwaggerCodegenRails."
+  s.email       = ["techno.rb@tbn.co.jp"]
+  s.homepage    = "https://github.com/technobrain/swagger_codegen_rails"
+  s.summary     = "Generator for swagger-blocks and swagger_ui_engine"
   s.description = "Description of SwaggerCodegenRails."
   s.license     = "MIT"
 
