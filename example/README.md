@@ -7,10 +7,9 @@
 │   │   └── concerns  
 |   |       └── **SCHEMA_FILES**  
 │   └── controllers
-        ├── **swagger_controller.rb**
+│       ├── **swagger_controller.rb**
 │       └── concerns
-|           └── **CONTROLLER_NAME**  
-|                 └── **ENDPOINT.rb**  
+|            └── **ENDPOINT.rb**  
 ├── config
 │   └── initializers  
 │       └── **swagger_codegen_rails.rb**
@@ -29,10 +28,10 @@ SwaggerCodegenRails.configure do |config|
   }
 
   config.concern_dir = "/path/to/your/concern/directory"
-  # default: /app/controllers/concerns
+  # default: app/controllers/concerns
 
   config.schema_dir = "/path/to/your/schema/dir"
-  # default: /app/models/concerns
+  # default: app/models/concerns
 end
 ```
 |configurations|type|default|description|
@@ -44,13 +43,18 @@ config.versions_url|hash|EMPTY|define versioned path|
 
 
 ## install
-**``rails g swagger_codegen_rails:install NAMESPACE``** will create these files listed below.
+**``rails g swagger:install``** will create these files listed below.
 
+- config/initializers/swagger_ui_engine.rb
 - config/initializers/swagger_codegen_rails.rb
+
+## initialize
+**``rails g swagger:init NAMESPACE``**
+
 - app/controllers/swagger_controller.rb
 - app/controllers/concerns
 
 ## create endpoint
-**``rails g swagger_codegen_rails:add NAMESPACE HTTP_METHOD ENDPOINT PARAMETERS``**
+**``rails g swagger:add NAMESPACE HTTP_METHOD ENDPOINT PARAMETERS``**
  will create
  **``app/controllers/concerns/_ENDPOINT.rb``**

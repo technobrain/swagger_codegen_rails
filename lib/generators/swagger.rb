@@ -1,0 +1,3 @@
+module Swagger
+
+end
