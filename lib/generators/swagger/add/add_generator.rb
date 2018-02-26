@@ -11,27 +11,34 @@ module Swagger
     end
 
     def create_endpoint_doc
-      template '_swagger.rb.tt', File.join(swagger_path, "_#{file_name}.rb") if file_name
+      template '_swagger.rb.tt', File.join(swagger_path, "_#{swagger_file_name}.rb") if swagger_file_name
     end
 
     private
+
     def module_name
-      file_name.camelize
+      swagger_file_name.camelize
     end
 
-    def name_space
+    def version_namespace
       SwaggerCodegenRails.configuration.versions_url[name.to_sym] || name
     end
 
     def swagger_path
       base_path = SwaggerCodegenRails.configuration.concern_dir
-      File.join(base_path, name)
+      File.join(base_path, version_namespace)
     end
 
-    def file_name
-      name_space = File.dirname("/" + name_space + "/")
-      if uri.start_with?(name_space)
-        uri.sub(name_space, '').gsub("/", "_").gsub(":",'')
+    def slash_replace(str)
+      str.gsub("/","_").gsub(/\A_*/, '')
+    end
+
+    def swagger_file_name
+      tmp_uri = slash_replace(uri)
+      name_space = slash_replace(version_namespace)
+
+      if tmp_uri.start_with?(name_space)
+        tmp_uri.sub(name_space, '').gsub(":",'').sub(/\A_*/, '')
       else
         raise ArgumentError
       end
