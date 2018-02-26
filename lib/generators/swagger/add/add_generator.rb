@@ -7,7 +7,6 @@ module Swagger
     source_root File.expand_path('../templates', __FILE__)
 
     def arguments
-      byebug
       @params = ::SwaggerCodegenRails.parse(parameter)
     end
 
