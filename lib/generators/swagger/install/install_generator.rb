@@ -15,6 +15,11 @@ module Swagger
       route "mount SwaggerUiEngine::Engine, at: '/swagger'"
     end
 
+    def insert_gemfile
+      gem 'swagger_ui_engine'
+      gem 'swagger-blocks'
+    end
+
     private
     def initializer_exist?
       initializer_path = "config/initializers/swagger_ui_engine.rb"
