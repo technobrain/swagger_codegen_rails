@@ -7,8 +7,8 @@ require "swagger_codegen_rails/version"
 Gem::Specification.new do |s|
   s.name        = "swagger_codegen_rails"
   s.version     = SwaggerCodegenRails::VERSION
-  s.authors     = ["techno brain"]
-  s.email       = ["techno.rb@tbn.co.jp"]
+  s.authors     = ["Akifumi Tomiyama", "technobrain"]
+  s.email       = ["akifumi_tomiyama@tbn.co.jp", "techno.rb@tbn.co.jp"]
   s.homepage    = "https://github.com/technobrain/swagger_codegen_rails"
   s.summary     = "Generator for swagger-blocks and swagger_ui_engine"
   s.description = "SWAGGER generator for rails APIs working with swagger_ui_engine and swagger-block."
