@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["techno.rb@tbn.co.jp"]
   s.homepage    = "https://github.com/technobrain/swagger_codegen_rails"
   s.summary     = "Generator for swagger-blocks and swagger_ui_engine"
-  s.description = "Description of SwaggerCodegenRails."
+  s.description = "SWAGGER generator for rails APIs working with swagger_ui_engine and swagger-block."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
