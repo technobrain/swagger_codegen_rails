@@ -23,6 +23,13 @@ $ gem install swagger_codegen_rails
 ```
 
 ## Usage
+### Demo
+```bash
+$ rails g swagger:install
+$ rails g swagger:init /api/v1
+$ rails g swagger:add /api/v1 /api/v1/user/:id id:path:integer:true
+```
+
 ### Create intializer file
 ```bash
 $ rails g swagger:install
@@ -66,6 +73,8 @@ $ rails g swagger:init NAMESPACE
 ### To add Endpoint
 ```bash
 $ rails g swagger:add NAMESPACE HTTP_METHOD URI [PARAMETERS; name:in:type:required]
+$ # If you do NOT want namespace, example below
+$ rails g swagger:add . GET /users id:path:integer:true
 ```
 
 Parameters:
@@ -79,7 +88,11 @@ Parameters:
 
 
 ## Contributing
-Contribution directions go here.
+1. Fork it ( https://github.com/technobrain/swagger_codegen_rails )
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create new Pull Request
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
