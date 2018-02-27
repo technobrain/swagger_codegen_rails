@@ -11,12 +11,13 @@ RSpec.describe Swagger::InstallGenerator, type: :generator do
     expect(gen).to receive :create_initializer_file
     expect(gen).to receive :create_swagger_ui_initializer_file
     expect(gen).to receive :insert_ui_route
+    expect(gen).to receive :insert_gemfile
     gen.invoke_all
   end
 
   describe "generated files" do
     before do
-      run_generator %w(.)
+    j run_generator %w(.)
     end
 
     describe "swagger_ui_engine initializer file" do
@@ -33,6 +34,14 @@ RSpec.describe Swagger::InstallGenerator, type: :generator do
     describe "route file" do
       subject { file("config/routes.rb") }
       it { is_expected.to contain(/mount SwaggerUiEngine::Engine, at:/) }
+    end
+
+    describe "Gemfile" do
+      subject { file("Gemfile") }
+      it "should contain" do
+        expect(subject).to contain("gem 'swagger_ui_engine'")
+        expect(subject).to contain("gem 'swagger-blocks'")
+      end
     end
   end
 end

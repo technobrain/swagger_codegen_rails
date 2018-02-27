@@ -12,6 +12,7 @@ module Generators
     before do
       prepare_destination
       create_tmp_route_file
+      create_tmp_gemfile
     end
   end
 
@@ -28,6 +29,19 @@ module Generators
 
     FileUtils.mkdir_p(File.dirname(route_path))
     open(route_path, "w") do |file|
+      file.puts content
+    end
+  end
+
+  def create_tmp_gemfile
+    gemfile_path = File.join(destination_path, "Gemfile")
+    content = <<-EOS
+    source "https://rubygems.org"
+
+    gem "rails"
+    EOS
+
+    open(gemfile_path, "w") do |file|
       file.puts content
     end
   end
