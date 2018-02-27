@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     swagger_codegen_rails (0.0.11)
-      rails (~> 5.1.4)
+      rails (>= 5.0)
       swagger-blocks
       swagger_ui_engine
 
