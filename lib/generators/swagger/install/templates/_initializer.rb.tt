@@ -9,5 +9,5 @@ SwaggerCodegenRails.configure do |config|
   config.concern_dir = "app/controllers/concerns"
   
   # directory swagger response schema placed
-  # config.schema_dir = "app/models/concerns"
+  config.schema_dir = "app/models/concerns"
 end
