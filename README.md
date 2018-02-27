@@ -1,5 +1,7 @@
+[![Gem Version](https://badge.fury.io/rb/swagger_codegen_rails.svg)](https://badge.fury.io/rb/swagger_codegen_rails)
 [![Build Status](https://travis-ci.org/technobrain/swagger_codegen_rails.svg?branch=master)](https://travis-ci.org/technobrain/swagger_codegen_rails)
 [![CircleCI](https://circleci.com/gh/technobrain/swagger_codegen_rails.svg?style=svg)](https://circleci.com/gh/technobrain/swagger_codegen_rails)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b80adfbb67fff2493c4e/maintainability)](https://codeclimate.com/github/technobrain/swagger_codegen_rails/maintainability)
 
 # SwaggerCodegenRails
 this plugin generate SWAGGER API document's templates for [swagger-blocks](https://github.com/fotinakis/swagger-blocks), [swagger_ui_engine](https://github.com/zuzannast/swagger_ui_engine).
