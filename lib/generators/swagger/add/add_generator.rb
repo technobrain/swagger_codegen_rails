@@ -20,36 +20,22 @@ module Swagger
       swagger_file_name.camelize
     end
 
-    def version_namespace
-      config = SwaggerCodegenRails.configuration.versions_url
-      config[name.to_sym] || name if config
-    end
-
     def name_space
-      SwaggerCodegenRails.configuration.versions_url[name.to_sym] || name
+      config = SwaggerCodegenRails.configuration.versions_url
+      config ? (config[name.to_sym] || name) : name
     end
 
     def swagger_path
       base_path = SwaggerCodegenRails.configuration.concern_dir
-      File.join(base_path, version_namespace)
+      File.join(base_path, name_space)
     end
 
     def slash_replace(str)
-      str.gsub("/","_").gsub(/\A_*/, '')
+      str&.gsub("/","_")&.gsub(/\A_*/, '')
     end
 
     def swagger_file_name
-      tmp_uri = slash_replace(uri)
-      name_space = slash_replace(version_namespace)
-
-      if tmp_uri.start_with?(name_space)
-        tmp_uri.sub(name_space, '').gsub(":",'').sub(/\A_*/, '')
-      else
-        raise ArgumentError
-      end
-    rescue ArgumentError => e
-      Rails.logger.error e
-      Rails.logger.error e.backtrace.join("\n")
+      slash_replace(uri.sub(name_space, ''))
     end
   end
 end

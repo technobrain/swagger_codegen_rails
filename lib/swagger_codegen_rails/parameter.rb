@@ -7,7 +7,7 @@ module SwaggerCodegenRails
     def map_params(str)
       params = devide(str)
       self.each_with_index do |_v, i|
-        self[i] = params[i]
+        self[i] = params[i].blank? ? "TODO" : params[i]
       end
     rescue IndexError => e
       logger.error e
@@ -16,7 +16,7 @@ module SwaggerCodegenRails
     end
 
     def devide(arg_str)
-      arg_str.split(":")
+      arg_str.split(":", 4)
     end
   end
 end

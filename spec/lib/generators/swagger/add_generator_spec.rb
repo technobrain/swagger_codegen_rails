@@ -63,4 +63,34 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
       it { is_expected.not_to contain("parameter do") }
     end
   end
+
+  describe "generated files without namespace" do
+    before do
+      run_generator %w(. POST /users id:path:integer:true)
+    end
+
+    describe "endpoint document" do
+      subject { file("app/controllers/concerns/_users.rb") }
+      it { is_expected.to exist }
+      it { is_expected.to contain("key :name, :id") }
+      it { is_expected.to contain("key :in, :path") }
+      it { is_expected.to contain("key :type, :integer") }
+      it { is_expected.to contain("key :required, true") }
+    end
+  end
+
+  describe "gerated files without strange params format" do
+    subject { file("app/controllers/concerns/_users.rb") }
+
+    describe "only name" do
+      before do
+        run_generator %w(. GET /users id:::)
+      end
+      it { is_expected.to exist }
+      it { is_expected.to contain("key :name, :id") }
+      it { is_expected.to contain("key :in, :TODO") }
+      it { is_expected.to contain("key :type, :TODO") }
+      it { is_expected.to contain("key :required, TODO") }
+    end
+  end
 end
