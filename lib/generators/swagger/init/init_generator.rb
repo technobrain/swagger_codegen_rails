@@ -18,9 +18,7 @@ module Swagger
     end
 
     def insert_route
-      # generate 'resource_route', name_path, verbose: false
-      in_root { run_ruby_script("bundle exec rails generate resource_route #{name_path}", verbose: false) }
-      byebug
+      generate 'resource_route', name_path, verbose: false
     end
 
     private
