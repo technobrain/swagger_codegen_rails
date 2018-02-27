@@ -14,5 +14,9 @@ module SwaggerCodegenRails
         self.class.send(:define_method, default.first) { default.last }
       end
     end
+
+    def swagger_url
+      self.versions_url.map { |k, v| [k, File.join("/", v, "swagger.json")] }.to_h
+    end
   end
 end

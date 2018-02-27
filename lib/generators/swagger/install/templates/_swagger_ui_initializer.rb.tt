@@ -1,13 +1,7 @@
 # config/initializers/swagger_codegen_rails.rb
 
 SwaggerUiEngine.configure do |config|
-<% if SwaggerCodegenRails.configuration.versioned -%>
-  config.swagger_url = {
-  # version: "app/controllers/<%= name %>/swagger.json"
-  j
-<% else -%>
-  config.swagger_url = "app/controllers/swagger.json"
-<% end -%>
+  config.swagger_url = SwaggerCodegenRails.configuration.swagger_url
   # Controls how the API listing is displayed. It can be set to 'none' (default), 'list' (shows operations for each resource), or 'full' (fully expanded: shows operations and their details).
   config.doc_expansion = 'list'
 
