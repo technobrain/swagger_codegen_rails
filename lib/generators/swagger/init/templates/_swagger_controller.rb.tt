@@ -1,7 +1,7 @@
 <% module_namespacing do %>
 class SwaggerController < ActionController::Base
   include Swagger::Blocks
-  Dir.glob("<%= namespace_dir %>/**/*.rb").each do |swagger|
+  Dir.glob("<%= namespace_dir -%>/**/*.rb").each do |swagger|
     include swagger
   end
   

@@ -18,7 +18,7 @@ module Swagger
     end
 
     def insert_route
-      generate 'resource_route', name_path, verbose: false
+      generate 'resource_route', namespace, verbose: false
     end
 
     private
@@ -34,8 +34,35 @@ module Swagger
       File.join(concern_dir, name)
     end
 
-    def name_path
-      File.join("/", name, "swagger").sub(/\A\/+/, '')
+    def module_namespacing(&block)
+      return unless namespaced?
+      content = capture(&block)
+      namespaces.reverse.each do |name|
+        content = wrap_with_namespace(content, name)
+      end
+      concat(content)
+    end
+   
+    def namespaces
+      name.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
+    end
+
+    def namespace
+      name.sub(/\A\//, '').sub(/\/\Z/, '')
+    end
+
+    def namespaced?
+      namespaces
+    end
+
+    def wrap_with_namespace(content, namespace)
+      content = indent(content).chomp
+      "module #{namespace}\n#{content}\nend\n"
+    end
+
+    def indent(content, multiplier = 2)
+      spaces = " " * multiplier
+      content.each_line.map { |line| line.blank? ? line : "#{spaces}#{line}" }.join
     end
   end
 end
