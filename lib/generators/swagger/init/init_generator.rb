@@ -18,7 +18,7 @@ module Swagger
     end
 
     def insert_route
-      generate 'resource_route', name_path, verbose: false
+      generate 'resource_route', namespace, verbose: false
     end
 
     private
@@ -45,6 +45,10 @@ module Swagger
    
     def namespaces
       name.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
+    end
+
+    def namespace
+      name.sub(/\A\//, '').sub(/\/\Z/, '')
     end
 
     def namespaced?
