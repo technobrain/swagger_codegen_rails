@@ -1,8 +1,9 @@
-require 'rails/generators/rails/resource_route/resource_route_generator'
+require 'swagger_codegen_rails/namespace'
 
 module Swagger
   class InitGenerator < ::Rails::Generators::NamedBase
-
+    
+    include SwaggerCodegenRails::Namespace
     source_root File.expand_path('../templates', __FILE__)
 
     def create_concern_dir
@@ -18,8 +19,7 @@ module Swagger
     end
 
     def insert_route
-      generate 'resource_route', namespace, verbose: false
-      byebug
+      route namespaced_route
     end
 
     private
@@ -33,37 +33,6 @@ module Swagger
 
     def namespace_dir
       File.join(concern_dir, name)
-    end
-
-    def module_namespacing(&block)
-      return unless namespaced?
-      content = capture(&block)
-      namespaces.reverse.each do |name|
-        content = wrap_with_namespace(content, name)
-      end
-      concat(content)
-    end
-   
-    def namespaces
-      name.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
-    end
-
-    def namespace
-      name.sub(/\A\//, '').sub(/\/\Z/, '') + "/swagger"
-    end
-
-    def namespaced?
-      namespaces
-    end
-
-    def wrap_with_namespace(content, namespace)
-      content = indent(content).chomp
-      "module #{namespace}\n#{content}\nend\n"
-    end
-
-    def indent(content, multiplier = 2)
-      spaces = " " * multiplier
-      content.each_line.map { |line| line.blank? ? line : "#{spaces}#{line}" }.join
     end
   end
 end
