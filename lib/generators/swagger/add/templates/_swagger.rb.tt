@@ -7,7 +7,7 @@ module <%= module_name %>
 
   included do
     swagger_path '<%= uri %>' do
-      operation <%= http_method %> do
+      operation :<%= http_method %> do
         key :description, "TODO: describe endpoint here"
         key :operationId, "TODO: "
         key :produces, [

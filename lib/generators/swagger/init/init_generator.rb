@@ -1,9 +1,12 @@
 require 'swagger_codegen_rails/namespace'
+require 'swagger_codegen_rails/constanize'
 
 module Swagger
   class InitGenerator < ::Rails::Generators::NamedBase
     
     include SwaggerCodegenRails::Namespace
+    include SwaggerCodegenRails::Constanize
+
     source_root File.expand_path('../templates', __FILE__)
 
     def create_concern_dir
