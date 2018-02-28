@@ -14,3 +14,4 @@ gemspec
 gem 'rspec-rails', group: [:development, :test]
 gem 'ammeter', group: [:development, :test]
 gem 'byebug', group: [:development, :test]
+gem 'swagger_ui_engine', group: [:development, :test]
