@@ -1,5 +1,9 @@
+require 'swagger_codegen_rails/namespace'
+
 module Swagger
   class AddGenerator < ::Rails::Generators::NamedBase
+    include SwaggerCodegenRails::Namespace
+
     argument :http_method, type: :string, required: true
     argument :uri, type: :string, required: true
     argument :parameter, type: :array, required: false, banner: 'name:in:type:required'
@@ -15,7 +19,6 @@ module Swagger
     end
 
     private
-
     def module_name
       swagger_file_name.camelize
     end
