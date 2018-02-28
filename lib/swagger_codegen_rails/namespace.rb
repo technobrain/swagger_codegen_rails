@@ -1,7 +1,7 @@
 module SwaggerCodegenRails
-  class Namespace
-    include ActionView::Helpers::CaptureHelper
-    include ActionView::Context
+  class Namespace < ActionView::Base
+    #include ActionView::Helpers
+    # include ActionView::Context
 
     attr_reader :name
 
@@ -16,6 +16,7 @@ module SwaggerCodegenRails
       @name&.each do |name|
         content = wrap_with_namespace(content, name)
       end
+      #concat(content)
       content
     end
 

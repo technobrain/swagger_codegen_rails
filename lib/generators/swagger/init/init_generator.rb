@@ -1,3 +1,5 @@
+require 'swagger_codegen_rails/namespace'
+
 module Swagger
   class InitGenerator < ::Rails::Generators::NamedBase
 
@@ -26,6 +28,11 @@ module Swagger
 
     def namespace_dir
       File.join(concern_dir, name)
+    end
+
+    def module_namespacing(&block)
+      namespace = SwaggerCodegenRails::Namespace.new(name)
+      concat(namespace.module_namespacing(&block))
     end
   end
 end

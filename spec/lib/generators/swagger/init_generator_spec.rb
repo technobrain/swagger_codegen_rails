@@ -8,6 +8,7 @@ RSpec.describe Swagger::InitGenerator, type: :generator do
   setup_generator_test
 
   it 'run_all_tasks' do
+    byebug
     gen = generator %w(api/v1)
     expect(gen).to receive :create_concern_dir
     expect(gen).to receive :create_namespace_dir
@@ -30,9 +31,11 @@ RSpec.describe Swagger::InitGenerator, type: :generator do
       it { is_expected.to exist }
     end
     
-    describe "swagger_controller" do
+    decribe "swagger_controller" do
       subject { file("app/controllers/api/v1/swagger_controller.rb") }
-      it {is_expected.to exist }
+      it { is_expected.to exist }
+      it { is_expected.to contain("module Api") }
+      it { is_expected.to contain("module V1") }
     end
   end
 end
