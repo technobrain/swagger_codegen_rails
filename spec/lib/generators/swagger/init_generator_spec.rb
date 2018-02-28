@@ -38,6 +38,14 @@ RSpec.describe Swagger::InitGenerator, type: :generator do
         it { is_expected.to contain("module V1") }
         it { is_expected.to contain("module Api\n  module V1\n") }
       end
+
+      describe "routes" do
+        subject { file("config/routes.rb") }
+        it { is_expected.to exist }
+        it { is_expected.to contain("namespace :api do\n") }
+        it { is_expected.to contain("namespace :v1 do\n") }
+        it { is_expected.to contain("resources :swagger, only: :index\n") }
+      end
     end
 
     context "without namespace" do
@@ -59,6 +67,13 @@ RSpec.describe Swagger::InitGenerator, type: :generator do
         subject { file("app/controllers/swagger_controller.rb") }
         it { is_expected.to exist }
         it { is_expected.not_to contain("module") }
+      end
+
+      describe "routes" do
+        subject { file("config/routes.rb") }
+        it { is_expected.to exist }
+        it { is_expected.not_to contain("namespace :api do\n") }
+        it { is_expected.to contain("resources :swagger, only: :index\n") }
       end
     end
   end
