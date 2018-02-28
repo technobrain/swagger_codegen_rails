@@ -34,5 +34,9 @@ module Swagger
     def namespace_dir
       File.join(concern_dir, name)
     end
+
+    def ns
+      name
+    end
   end
 end

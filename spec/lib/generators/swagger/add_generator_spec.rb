@@ -27,6 +27,8 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
     describe "endpoint document" do
       subject { file("app/controllers/concerns/api/v1/_users.rb") }
       it { is_expected.to exist }
+      it { is_expected.to contain("module Api") }
+      it { is_expected.to contain("module V1") }
       it { is_expected.to contain("module User") }
       it { is_expected.to contain("key :name, :id") }
       it { is_expected.to contain("key :in, :query") }
@@ -43,6 +45,8 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
     describe "endpoint document" do
       subject { file("app/controllers/concerns/api/v1/_users.rb") }
       it { is_expected.to exist }
+      it { is_expected.to contain("module Api") }
+      it { is_expected.to contain("module V1") }
       it { is_expected.to contain("module User") }
       it { is_expected.to contain("key :name, :id") }
       it { is_expected.to contain("key :in, :query") }

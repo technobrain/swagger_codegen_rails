@@ -30,11 +30,11 @@ module SwaggerCodegenRails
     end
    
     def namespaces
-      name.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
+      ns.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
     end
 
     def namespace
-      File.join(name, "swagger").sub(/\A\//, '').sub(/\/\Z/, '')
+      File.join(ns, "swagger").sub(/\A\//, '').sub(/\/\Z/, '')
     end
 
     def namespaced?

@@ -23,14 +23,14 @@ module Swagger
       swagger_file_name.camelize
     end
 
-    def name_space
+    def ns
       config = SwaggerCodegenRails.configuration.versions_url
       config ? (config[name.to_sym] || name) : name
     end
 
     def swagger_path
       base_path = SwaggerCodegenRails.configuration.concern_dir
-      File.join(base_path, name_space)
+      File.join(base_path, ns)
     end
 
     def slash_replace(str)
@@ -38,7 +38,7 @@ module Swagger
     end
 
     def swagger_file_name
-      slash_replace(uri.sub(name_space, ''))
+      slash_replace(uri.sub(ns, ''))
     end
   end
 end
