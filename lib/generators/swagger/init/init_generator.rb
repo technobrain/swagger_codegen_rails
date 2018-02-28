@@ -1,4 +1,4 @@
-require 'swagger_codegen_rails/namespace'
+require 'rails/generators/rails/resource_route/resource_route_generator'
 
 module Swagger
   class InitGenerator < ::Rails::Generators::NamedBase
@@ -15,6 +15,10 @@ module Swagger
 
     def create_swagger_controller_file
       template "_swagger_controller.rb.tt", swagger_controller_path
+    end
+
+    def insert_route
+      generate 'resource_route', name_path, verbose: false
     end
 
     private

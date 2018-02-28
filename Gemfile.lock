@@ -145,6 +145,7 @@ DEPENDENCIES
   rspec-rails
   sqlite3
   swagger_codegen_rails!
+  swagger_ui_engine
 
 BUNDLED WITH
    1.16.1
