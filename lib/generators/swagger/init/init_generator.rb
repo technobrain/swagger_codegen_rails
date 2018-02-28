@@ -31,8 +31,30 @@ module Swagger
     end
 
     def module_namespacing(&block)
-      namespace = SwaggerCodegenRails::Namespace.new(name)
-      concat(namespace.module_namespacing(&block))
+      return unless namespaced?
+      content = capture(&block)
+      namespaces.reverse.each do |name|
+        content = wrap_with_namespace(content, name)
+      end
+      concat(content)
+    end
+   
+    def namespaces
+      name.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
+    end
+
+    def namespaced?
+      namespaces
+    end
+
+    def wrap_with_namespace(content, namespace)
+      content = indent(content).chomp
+      "module #{namespace}\n#{content}\nend\n"
+    end
+
+    def indent(content, multiplier = 2)
+      spaces = " " * multiplier
+      content.each_line.map { |line| line.blank? ? line : "#{spaces}#{line}" }.join
     end
   end
 end
