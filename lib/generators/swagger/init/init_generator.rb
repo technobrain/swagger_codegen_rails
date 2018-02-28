@@ -19,6 +19,7 @@ module Swagger
 
     def insert_route
       generate 'resource_route', namespace, verbose: false
+      byebug
     end
 
     private
@@ -48,7 +49,7 @@ module Swagger
     end
 
     def namespace
-      name.sub(/\A\//, '').sub(/\/\Z/, '')
+      name.sub(/\A\//, '').sub(/\/\Z/, '') + "/swagger"
     end
 
     def namespaced?
