@@ -1,7 +1,7 @@
 <% module_namespacing do %>
 class SwaggerController < ActionController::Base
   include Swagger::Blocks
-  include SwaggerCodegenRails::Konstants
+  extend SwaggerCodegenRails::Konstants
 
   include_swagger '<%= namespace_dir -%>'
   
