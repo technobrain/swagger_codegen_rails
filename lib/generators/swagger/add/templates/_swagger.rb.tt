@@ -6,8 +6,8 @@ module <%= module_name %>
   include_swagger '<%= swagger_schema_dir -%>'
 
   included do
-    swagger_path '<%= uri %>' do
-      operation :<%= http_method %> do
+    swagger_path '<%= uri -%>' do
+      operation :<%= http_method.downcase -%> do
         key :description, "TODO: describe endpoint here"
         key :operationId, "TODO: "
         key :produces, [
