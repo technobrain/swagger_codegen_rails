@@ -37,9 +37,17 @@ module SwaggerCodegenRails
       namespace.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
     end
 
+    def namespace
+
+    end
+
+    class Namespaces
+      def initialize
+    end
     def namespaced?
       namespace
     end
+
 
     def wrap_with_namespace(content, namespace)
       content = indent(content).chomp
