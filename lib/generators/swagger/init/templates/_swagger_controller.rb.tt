@@ -1,11 +1,9 @@
 <% module_namespacing do %>
 class SwaggerController < ActionController::Base
   include Swagger::Blocks
-  include SwaggerCodegenRails::Constanize
+  include SwaggerCodegenRails::Konstants
 
-  constants(Dir.glob("<%= File.join(SwaggerCodegenRails.configuration.concern_dir, name) -%>/**/*.rb")).each do |swagger|
-    include swagger
-  end
+  include_swagger '<%= namespace_dir -%>'
   
   swagger_root do
     key :swagger, "2.0"

@@ -25,7 +25,7 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
     end
 
     describe "endpoint document" do
-      subject { file("app/controllers/concerns/api/v1/_users.rb") }
+      subject { file("app/controllers/concerns/api/v1/users.rb") }
       it { is_expected.to exist }
       it { is_expected.to contain("module Api") }
       it { is_expected.to contain("module V1") }
@@ -43,7 +43,7 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
     end
 
     describe "endpoint document" do
-      subject { file("app/controllers/concerns/api/v1/_users.rb") }
+      subject { file("app/controllers/concerns/api/v1/users.rb") }
       it { is_expected.to exist }
       it { is_expected.to contain("module Api") }
       it { is_expected.to contain("module V1") }
@@ -61,7 +61,7 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
     end
 
     describe "endopoint document" do
-      subject { file("app/controllers/concerns/api/v1/_users.rb") }
+      subject { file("app/controllers/concerns/api/v1/users.rb") }
       it { is_expected.to exist }
       it { is_expected.to contain("module User") }
       it { is_expected.not_to contain("parameter do") }
@@ -74,7 +74,7 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
     end
 
     describe "endpoint document" do
-      subject { file("app/controllers/concerns/_users.rb") }
+      subject { file("app/controllers/concerns/users.rb") }
       it { is_expected.to exist }
       it { is_expected.to contain("key :name, :id") }
       it { is_expected.to contain("key :in, :path") }
@@ -84,7 +84,7 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
   end
 
   describe "gerated files without strange params format" do
-    subject { file("app/controllers/concerns/_users.rb") }
+    subject { file("app/controllers/concerns/users.rb") }
 
     describe "only name" do
       before do
