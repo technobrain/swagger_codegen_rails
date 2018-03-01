@@ -42,8 +42,6 @@ $ rails g swagger:install
 # config/initializers/swagger_codegen_rails.rb
 
 SwaggerCodegenRails.configure do |config|
-  config.versioned = false # boolean
-
   config.versions_url = {
     v1: 'api/v1',
     v2: 'api/v2'
@@ -61,7 +59,6 @@ Options:
 
 |configurations|type|default|description|
 |:------|:----|:-|:-------------------------|
-|config.versioned|boolean|false|set path of versioned API documentations|
 config.versions_url|hash|EMPTY|define versioned path|
 |config.concern_dir|string|/app/controllers/concern|set root path of endpoint documentations|
 |config.schema_dir|string|/app/models/concern|set root path of response schema documentations|
@@ -78,6 +75,19 @@ $ rails g swagger:add NAMESPACE HTTP_METHOD URI [PARAMETERS; name:in:type:requir
 $ # If you do NOT want namespace, example below
 $ rails g swagger:add . GET /users id:path:integer:true
 ```
+
+### To show SwaggerUI
+Add these lines in your config/application.rb (If you won't create versioned API, it is no needed.)
+```Ruby
+# config/application.rb
+config.paths.add "#{config.root}/app/controllers/**/*", glob: "**/*", eager_load: true
+```
+
+Then start your server with rails command
+```bash
+$ rails s
+```
+And access ``http://localhost:3000/swagger`` in browser.
 
 Parameters:
 
