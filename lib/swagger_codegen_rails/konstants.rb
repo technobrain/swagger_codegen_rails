@@ -5,7 +5,7 @@ module SwaggerCodegenRails
 
     def include_swagger(dir, type: :controller)
       find_from_path(dir, "/**/*.rb").each do |path|
-        include Konstant.new(path, base_path).specify!
+        include Konstant.new(path, base_path(type)).specify!
       end
     end
 
