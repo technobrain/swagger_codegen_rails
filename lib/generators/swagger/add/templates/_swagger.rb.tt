@@ -29,24 +29,25 @@ module <%= module_name %>
         response 200 do
           key :description, "TODO: "
           schema do
-            key :'$ref', TODO:
+            # key :'$ref', TODO:
           end
         end
   
         response 404 do
           key :description, "TODO: "
           schema do
-            key :'$ref', TODO:
+            # key :'$ref', TODO:
           end
         end
   
         response 501 do
           key :description, "TODO: "
           schema do
-            key :'$ref', TODO:
+            # key :'$ref', TODO:
           end
         end
       end
     end
   end
+end
 <% end -%>
