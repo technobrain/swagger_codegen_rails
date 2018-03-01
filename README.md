@@ -75,6 +75,15 @@ $ rails g swagger:add NAMESPACE HTTP_METHOD URI [PARAMETERS; name:in:type:requir
 $ # If you do NOT want namespace, example below
 $ rails g swagger:add . GET /users id:path:integer:true
 ```
+Parameters:
+
+||description|
+|:-|:-|
+|name|parameter name|
+|in|ex) in =\> /items?id=###, query =\> parameter is id.|
+|type|data type|
+|required|required|
+
 
 ### To show SwaggerUI
 Add these lines in your config/application.rb (If you won't create versioned API, it is no needed.)
@@ -89,14 +98,6 @@ $ rails s
 ```
 And access ``http://localhost:3000/swagger`` in browser.
 
-Parameters:
-
-||description|
-|:-|:-|
-|name|parameter name|
-|in|ex) in =\> /items?id=###, query =\> parameter is id.|
-|type|data type|
-|required|required|
 
 
 ## Contributing
