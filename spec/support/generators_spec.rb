@@ -22,7 +22,7 @@ module Generators
 
   def create_tmp_route_file
     route_path = File.join(destination_path, "config/routes.rb")
-    content = <<-EOS
+    content = <<~EOS
     Rails.application.routes.draw do
     end
     EOS
