@@ -3,14 +3,27 @@ module SwaggerCodegenRails
 
     include SwaggerCodegenRails::Base
 
-    def include_swagger(path)
-      find_from_path(concern_dir, "/**/*.rb").each do |path|
-        include Konstant.new(path, concern_dir).specify!
+    def include_swagger(dir, type: :controller)
+      find_from_path(dir, "/**/*.rb").each do |path|
+        include Konstant.new(path, base_path).specify!
       end
     end
 
     def find_from_path(source, match)
       Dir.glob(File.join(source, match))
+    end
+
+    def base_path(type)
+      case type
+        when :controller
+          concern_dir
+        when :model
+          schema_dir
+        else
+          raise ArgumentError
+      end
+    rescue ArgumentError => e
+      puts "ArgumentError (not in [:controller, :model])"
     end
 
     class Konstant

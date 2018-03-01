@@ -3,7 +3,7 @@ module <%= module_name %>
   extend ActiveSupport::Concern
   extend SwaggerCodegenRails::Konstants
 
-  include_swagger '<%= swagger_schema_dir -%>'
+  include_swagger '<%= swagger_schema_dir -%>', type: :model
 
   included do
     swagger_path '<%= uri -%>' do

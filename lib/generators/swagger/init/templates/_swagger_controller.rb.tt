@@ -3,7 +3,7 @@ class SwaggerController < ActionController::Base
   include Swagger::Blocks
   extend SwaggerCodegenRails::Konstants
 
-  include_swagger '<%= namespace_dir -%>'
+  include_swagger '<%= namespace_dir -%>', type: :controller
   
   swagger_root do
     key :swagger, "2.0"
