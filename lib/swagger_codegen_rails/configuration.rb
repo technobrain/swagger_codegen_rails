@@ -3,7 +3,6 @@ module SwaggerCodegenRails
     OPTIONS = %i(
       concern_dir
       schema_dir
-      versioned
       versions_url
     ).freeze
 
