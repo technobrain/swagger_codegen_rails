@@ -1,6 +1,7 @@
 <% module_namespacing do -%>
 module <%= module_name %>
   extend ActiveSupport::Concern
+  extend SwaggerCodegenRails::Konstants
 
   include_swagger '<%= swagger_schema_dir -%>'
 
