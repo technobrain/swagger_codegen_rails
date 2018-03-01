@@ -1,13 +1,12 @@
 <% module_namespacing do -%>
 module <%= module_name %>
   extend ActiveSupport::Concern
-  Dir.glob[<%= SwaggerCodegenRails.configuration.schema_dir %> + "/**/*.rb"].each do |schema|
-    include schema
-  end
+
+  include_swagger '<%= swagger_schema_dir -%>'
 
   included do
     swagger_path '<%= uri %>' do
-      operation <%= http_method %> do
+      operation :<%= http_method %> do
         key :description, "TODO: describe endpoint here"
         key :operationId, "TODO: "
         key :produces, [

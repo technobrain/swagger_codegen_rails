@@ -4,17 +4,39 @@ module SwaggerCodegenRails
     def module_namespacing(&block)
       return unless namespaced?
       content = capture(&block)
-      namespaces.reverse.each do |name|
+      split_namespace.reverse.each do |name|
         content = wrap_with_namespace(content, name)
       end
       concat(content)
+    end
+
+    def namespaced?
+      namespace
+    end
+
+    def wrap_with_namespace(content, namespace)
+      content = indent(content).chomp
+      "module #{namespace}\n#{content}\nend\n"
+    end
+    
+    # ------------
+    # hoge/foo/bar
+    # => ["Hoge", "Foo", "Bar"]
+    # ------------
+    def split_namespace
+      namespace.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
+    end
+
+    def indent(content, multiplier = 2)
+      spaces = " " * multiplier
+      content.each_line.map { |line| line.blank? ? line : "#{spaces}#{line}" }.join
     end
 
     def namespaced_route
       depth = 0
       lines = []
 
-      namespaces.map(&:underscore).each do |ns|
+      split_namespace.map(&:underscore).each do |ns|
         lines << indent("namespace :#{ns} do\n", depth*2)
         depth += 1
       end
@@ -27,28 +49,6 @@ module SwaggerCodegenRails
       end
 
       lines.join
-    end
-   
-    def namespaces
-      name.gsub('.','').split("/").reject(&:blank?).map(&:camelize)
-    end
-
-    def namespace
-      File.join(name, "swagger").sub(/\A\//, '').sub(/\/\Z/, '')
-    end
-
-    def namespaced?
-      namespaces
-    end
-
-    def wrap_with_namespace(content, namespace)
-      content = indent(content).chomp
-      "module #{namespace}\n#{content}\nend\n"
-    end
-
-    def indent(content, multiplier = 2)
-      spaces = " " * multiplier
-      content.each_line.map { |line| line.blank? ? line : "#{spaces}#{line}" }.join
     end
   end
 end
