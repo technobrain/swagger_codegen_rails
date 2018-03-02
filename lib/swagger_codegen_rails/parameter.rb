@@ -10,8 +10,8 @@ module SwaggerCodegenRails
         self[i] = params[i].blank? ? "TODO" : params[i]
       end
     rescue IndexError => e
-      logger.error e
-      logger.error e.backtrace.join("\n")
+      Rails.logger.error e
+      Rails.logger.error e.backtrace.join("\n")
       return nil
     end
 

@@ -45,8 +45,9 @@ module SwaggerCodegenRails
       # => hoge/foo/bar
       # ------------
       def reduct(source, reduction)
-        File.join(File.dirname(source.sub(reduction, '')), File.basename(source, File.extname(source))).sub(/\A\//,'')
-  
+        File.join(File.dirname(source.sub(reduction, '')),
+                  File.basename(source, 
+                                File.extname(source))).sub(/\A\//,'')
       end
 
       # ------------
@@ -56,7 +57,6 @@ module SwaggerCodegenRails
       def constant(str)
         str.split("/").map(&:camelize).join("::").constantize
       end
-  
     end
   end
 end
