@@ -11,7 +11,7 @@ module <%= module_name %>
         key :description, "TODO: describe endpoint here"
         key :operationId, "TODO: "
         key :produces, [
-          'application/join',
+          'application/json',
         ]
         key :tags, [
           # A list of tags used by the specification with additional metadata.
@@ -33,14 +33,14 @@ module <%= module_name %>
             # key :'$ref', TODO:
           end
         end
-  
+
         response 404 do
           key :description, "TODO: "
           schema do
             # key :'$ref', TODO:
           end
         end
-  
+
         response 501 do
           key :description, "TODO: "
           schema do
