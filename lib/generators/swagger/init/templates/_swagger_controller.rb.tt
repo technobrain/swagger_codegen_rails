@@ -1,0 +1,27 @@
+<% module_namespacing do %>
+class SwaggerController < ActionController::Base
+  include Swagger::Blocks
+  extend SwaggerCodegenRails::Konstants
+
+  include_swagger '<%= namespace_dir -%>', type: :controller
+  
+  swagger_root do
+    key :swagger, "2.0"
+    info do
+      key :title, 'TODO: api title'
+      key :version, '0.0.1'
+      key :termsOfService, 'TODO: set your service URL'
+    end
+    key :consumes, ['application/json']
+    key :produces, ['application/json']
+  end
+
+  SWAGGER_CLASSES = [
+    self,
+  ].freeze
+
+  def index
+    render json: Swagger::Blocks.build_root_json(SWAGGER_CLASSES)
+  end
+end
+<% end -%>

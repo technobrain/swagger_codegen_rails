@@ -1,0 +1,13 @@
+SwaggerCodegenRails.configure do |config|
+  # version namespace
+  config.versions_url = {
+    # v1: 'api/v1',
+    # v2: 'api/v2'
+  }
+
+  # directory swagger document files placed
+  config.concern_dir = "app/controllers/concerns"
+  
+  # directory swagger response schema placed
+  config.schema_dir = "app/models/concerns"
+end

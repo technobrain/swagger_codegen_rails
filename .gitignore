@@ -6,5 +6,10 @@ spec/dummy/db/*.sqlite3
 spec/dummy/db/*.sqlite3-journal
 spec/dummy/log/*.log
 spec/dummy/tmp/
+spec/dummy/.byebug_history
+spec/dummy/config/initializers/swagger_ui_engine.rb
+spec/dummy/app/controllers/swagger_controller.rb
+spec/dummy/app/controllers/concerns
+spec/tmp
 *.gem
-Gemfile.lock
+.byebug_history
