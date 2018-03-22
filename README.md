@@ -29,7 +29,7 @@ $ gem install swagger_codegen_rails
 ```bash
 $ rails g swagger:install
 $ rails g swagger:init /api/v1
-$ rails g swagger:add /api/v1 /api/v1/user/:id id:path:integer:true
+$ rails g swagger:add /api/v1 get /api/v1/user/:id id:path:integer:true
 ```
 
 ### Create intializer file
@@ -73,8 +73,17 @@ $ rails g swagger:init NAMESPACE
 ```bash
 $ rails g swagger:add NAMESPACE HTTP_METHOD URI [PARAMETERS; name:in:type:required]
 $ # If you do NOT want namespace, example below
-$ rails g swagger:add . GET /users id:path:integer:true
+$ rails g swagger:add . get /users id:path:integer:true
 ```
+Parameters:
+
+||description|
+|:-|:-|
+|name|parameter name|
+|in|ex) in =\> /items?id=###, query =\> parameter is id.|
+|type|data type|
+|required|required|
+
 
 ### To show SwaggerUI
 Add these lines in your config/application.rb (If you won't create versioned API, it is no needed.)
@@ -89,14 +98,6 @@ $ rails s
 ```
 And access ``http://localhost:3000/swagger`` in browser.
 
-Parameters:
-
-||description|
-|:-|:-|
-|name|parameter name|
-|in|ex) in =\> /items?id=###, query =\> parameter is id.|
-|type|data type|
-|required|required|
 
 
 ## Contributing
