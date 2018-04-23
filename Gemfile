@@ -11,7 +11,11 @@ gemspec
 # your gem to rubygems.org.
 
 # To use a debugger
-gem 'rspec-rails', group: [:development, :test]
-gem 'ammeter', group: [:development, :test]
-gem 'byebug', group: [:development, :test]
-gem 'swagger_ui_engine', group: [:development, :test]
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'ammeter'
+  gem 'byebug'
+  gem 'swagger_ui_engine'
+  gem 'pry'
+  gem 'pry-byebug'
+end
