@@ -21,7 +21,7 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
         }
       end
       
-      run_generator %w(v1 GET /api/v1/users id:query:integer:true)
+      run_generator %w(v1 GET /users id:query:integer:true)
     end
 
     describe "endpoint document" do
@@ -29,6 +29,7 @@ RSpec.describe Swagger::AddGenerator, type: :generator do
       it { is_expected.to exist }
       it { is_expected.to contain("module Api") }
       it { is_expected.to contain("module V1") }
+      it { is_expected.to contain("swagger_path '/api/v1/users' do") }
       it { is_expected.to contain("module User") }
       it { is_expected.to contain("key :name, :id") }
       it { is_expected.to contain("key :in, :query") }

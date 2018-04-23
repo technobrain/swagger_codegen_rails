@@ -19,11 +19,5 @@ module Swagger
       gem 'swagger_ui_engine'
       gem 'swagger-blocks'
     end
-
-    private
-    def initializer_exist?
-      initializer_path = "config/initializers/swagger_ui_engine.rb"
-      File.exist?(initializer_path)
-    end
   end
 end

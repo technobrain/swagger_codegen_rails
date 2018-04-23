@@ -21,8 +21,17 @@ module Swagger
     end
 
     private
+
     def module_name
       swagger_file_name.camelize
+    end
+
+    def full_uri
+      if uri.sub(/\A\//, "").start_with?(namespace)
+        '/' + uri.sub(/\A\//, "")
+      else
+        '/' + namespace + '/' + uri.sub(/\A\//, "")
+      end
     end
 
     def namespace
