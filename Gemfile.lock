@@ -177,7 +177,7 @@ DEPENDENCIES
   pry
   pry-byebug
   rspec-rails
-  sqlite3
+  sqlite3 (~> 1.3.13)
   swagger_codegen_rails!
   swagger_ui_engine
 
