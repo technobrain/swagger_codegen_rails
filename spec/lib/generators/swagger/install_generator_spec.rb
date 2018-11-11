@@ -17,7 +17,7 @@ RSpec.describe Swagger::InstallGenerator, type: :generator do
 
   describe "generated files" do
     before do
-    j run_generator %w(.)
+      run_generator %w(.)
     end
 
     describe "swagger_ui_engine initializer file" do

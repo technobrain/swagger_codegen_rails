@@ -20,8 +20,8 @@ Gem::Specification.new do |s|
   s.add_dependency "swagger-blocks"
   s.add_dependency "swagger_ui_engine"
 
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency "ammeter"
-  s.add_development_dependency "byebug"
-  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "sqlite3", "~> 1.3.13"
+  s.add_development_dependency "ammeter", "~> 1.1.4"
+  s.add_development_dependency "byebug", "~> 10.0.2"
+  s.add_development_dependency "rspec-rails", "~> 3.7.2"
 end
