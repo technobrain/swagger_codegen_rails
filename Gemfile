@@ -16,6 +16,4 @@ group :development, :test do
   gem 'ammeter'
   gem 'byebug'
   gem 'swagger_ui_engine'
-  gem 'pry'
-  gem 'pry-byebug'
 end
