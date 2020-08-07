@@ -5,5 +5,6 @@ module SwaggerCodegenRails
   #VERSION = '0.1.1' #2018/03/01
   #VERSION = '0.1.2' #2018/04/23
   # VERSION = '0.1.3' #2018/11/11
-  VERSION = '0.1.4' #2019/05/16
+  # VERSION = '0.1.4' #2019/05/16
+  VERSION = '0.1.5' #2020/08/10
 end
