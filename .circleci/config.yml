@@ -7,9 +7,9 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-       - image: circleci/ruby:2.4.3-node-browsers
-       - image: circleci/ruby:2.5.0-node-browsers
-      
+       - image: circleci/ruby:2.5.8-node-browsers
+       - image: circleci/ruby:2.6.5-node-browsers
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -36,7 +36,7 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-        
+
       # run tests!
       - run:
           name: run tests
